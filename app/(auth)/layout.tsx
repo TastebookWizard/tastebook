@@ -1,14 +1,8 @@
-'use client';
-
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-
-import AuthForm from '@/components/layout/AuthForm';
-
-const Auth = () => {
-  const pathname = usePathname();
-  const isLogin = pathname === '/login';
-
+export default function AuthLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <div className="flex flex-col sm:flex-row h-screen">
       <div className="w-full sm:w-1/2 flex flex-col">
@@ -22,25 +16,11 @@ const Auth = () => {
         </div>
 
         {/* Auth form */}
-        <div className="flex-grow flex justify-center items-center">
-          <div className="w-full max-w-md space-y-4 p-8">
-            <h2 className="text-2xl font-bold mb-2">
-              {isLogin ? 'Login' : 'Sign Up'}
-            </h2>
-            <AuthForm isLogin={isLogin} />
-            <div className="text-center">
-              <span>
-                {isLogin ? 'No account yet? ' : 'Already have an account? '}
-              </span>
-              <Link
-                href={isLogin ? '/signup' : '/login'}
-                className="text-rose-500 hover:underline"
-              >
-                {isLogin ? 'Sign Up' : 'Login'}
-              </Link>
+          <div className="flex-grow flex items-center justify-center p-4">
+            <div className="w-full max-w-md">
+              {children}
             </div>
           </div>
-        </div>
       </div>
       <div className="w-0.5 bg-gray-200 hidden sm:block"></div>
       <div className="w-full sm:w-1/2 bg-rose-500">
@@ -69,15 +49,12 @@ const Auth = () => {
             </div>
           </div>
           <div className="text-center">
-            <p className="mb-4">Join our community today and start your culinary journey!</p>
-            <Link href="/signup" className="bg-white text-rose-500 px-6 py-2 rounded-full font-semibold hover:bg-opacity-90 transition-colors duration-300">
-              Get Started
-            </Link>
+            <p className="mb-4">
+              Join our community today and start your culinary journey!
+            </p>
           </div>
         </div>
       </div>
     </div>
   );
-};
-
-export default Auth;
+}

@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
@@ -54,39 +54,39 @@ const AuthForm: React.FC<AuthFormProps> = ({ isLogin }) => {
     const newErrors: { [key: string]: string } = {};
 
     if (!validateEmail(email)) {
-      newErrors.email = "Please enter a valid email address.";
+      newErrors.email = 'Please enter a valid email address.';
     }
 
     if (!isLogin) {
       if (firstName.trim() === '') {
-        newErrors.firstName = "First name is required.";
+        newErrors.firstName = 'First name is required.';
       }
       if (lastName.trim() === '') {
-        newErrors.lastName = "Last name is required.";
+        newErrors.lastName = 'Last name is required.';
       }
       if (username.trim() === '') {
-        newErrors.username = "Username is required.";
+        newErrors.username = 'Username is required.';
       }
       if (!Object.values(requirements).every(Boolean)) {
-        newErrors.password = "Password does not meet all requirements.";
+        newErrors.password = 'Password does not meet all requirements.';
       }
       if (password !== confirmPassword) {
-        newErrors.confirmPassword = "Passwords do not match.";
+        newErrors.confirmPassword = 'Passwords do not match.';
       }
     }
 
     if (email.trim() === '') {
-      newErrors.email = "Email is required.";
+      newErrors.email = 'Email is required.';
     }
     if (password.trim() === '') {
-      newErrors.password = "Password is required.";
+      newErrors.password = 'Password is required.';
     }
 
     setErrors(newErrors);
 
     if (Object.keys(newErrors).length === 0) {
       // Proceed with form submission
-      console.log("Form submitted successfully");
+      console.log('Form submitted successfully');
     }
   };
 
@@ -169,22 +169,55 @@ const AuthForm: React.FC<AuthFormProps> = ({ isLogin }) => {
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
-          {errors.confirmPassword && <ErrorMessage message={errors.confirmPassword} />}
+          {errors.confirmPassword && (
+            <ErrorMessage message={errors.confirmPassword} />
+          )}
         </div>
       )}
       {!isLogin && isClient && (
-        <motion.ul className="text-sm mt-2" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3 }}>
-          <motion.li className={getRequirementColor(requirements.length)} animate={{ color: requirements.length ? '#f43f5e' : '#9ca3af' }} transition={{ duration: 0.3 }}>
-            <span className="fas fa-check mr-1" aria-hidden="true"></span> At least 6 characters
+        <motion.ul
+          className="text-sm mt-2"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.3 }}
+        >
+          <motion.li
+            className={getRequirementColor(requirements.length)}
+            animate={{ color: requirements.length ? '#f43f5e' : '#9ca3af' }}
+            transition={{ duration: 0.3 }}
+          >
+            <span className="fas fa-check mr-1" aria-hidden="true"></span> At
+            least 6 characters
           </motion.li>
-          <motion.li className={getRequirementColor(requirements.letterAndNumber)} animate={{ color: requirements.letterAndNumber ? '#f43f5e' : '#9ca3af' }} transition={{ duration: 0.3 }}>
-            <span className="fas fa-check mr-1" aria-hidden="true"></span> Contains both letters and numbers
+          <motion.li
+            className={getRequirementColor(requirements.letterAndNumber)}
+            animate={{
+              color: requirements.letterAndNumber ? '#f43f5e' : '#9ca3af',
+            }}
+            transition={{ duration: 0.3 }}
+          >
+            <span className="fas fa-check mr-1" aria-hidden="true"></span>{' '}
+            Contains both letters and numbers
           </motion.li>
-          <motion.li className={getRequirementColor(requirements.specialChar)} animate={{ color: requirements.specialChar ? '#f43f5e' : '#9ca3af' }} transition={{ duration: 0.3 }}>
-            <span className="fas fa-check mr-1" aria-hidden="true"></span> Contains a special character
+          <motion.li
+            className={getRequirementColor(requirements.specialChar)}
+            animate={{
+              color: requirements.specialChar ? '#f43f5e' : '#9ca3af',
+            }}
+            transition={{ duration: 0.3 }}
+          >
+            <span className="fas fa-check mr-1" aria-hidden="true"></span>{' '}
+            Contains a special character
           </motion.li>
-          <motion.li className={getRequirementColor(requirements.upperAndLowerCase)} animate={{ color: requirements.upperAndLowerCase ? '#f43f5e' : '#9ca3af' }} transition={{ duration: 0.3 }}>
-            <span className="fas fa-check mr-1" aria-hidden="true"></span> Contains both uppercase and lowercase letters
+          <motion.li
+            className={getRequirementColor(requirements.upperAndLowerCase)}
+            animate={{
+              color: requirements.upperAndLowerCase ? '#f43f5e' : '#9ca3af',
+            }}
+            transition={{ duration: 0.3 }}
+          >
+            <span className="fas fa-check mr-1" aria-hidden="true"></span>{' '}
+            Contains both uppercase and lowercase letters
           </motion.li>
         </motion.ul>
       )}
@@ -193,10 +226,26 @@ const AuthForm: React.FC<AuthFormProps> = ({ isLogin }) => {
         {!isLogin && (
           <p className="text-sm text-gray-500 text-center mt-2">
             By signing up, you agree to our{' '}
-            <Link href="/terms" className="text-rose-500 hover:underline">Terms and Conditions</Link> and{' '}
-            <Link href="/privacy" className="text-rose-500 hover:underline">Privacy Policy</Link>
+            <Link href="/terms" className="text-rose-500 hover:underline">
+              Terms and Conditions
+            </Link>{' '}
+            and{' '}
+            <Link href="/privacy" className="text-rose-500 hover:underline">
+              Privacy Policy
+            </Link>
           </p>
         )}
+      </div>
+      <div className="text-center">
+        <span>
+          {isLogin ? 'No account yet? ' : 'Already have an account? '}
+        </span>
+        <Link
+          href={isLogin ? '/signup' : '/login'}
+          className="text-rose-500 hover:underline"
+        >
+          {isLogin ? 'Sign Up' : 'Login'}
+        </Link>
       </div>
     </form>
   );
