@@ -16,5 +16,15 @@ html {
 body {
   color: var(--foreground);
   background: var(--background);
-  text-wrap: balance;
+}
+
+::-moz-selection {
+  /* Code for Firefox */
+  background: #F43F5E;
+  color: #FFFFFF;
+}
+
+::selection {
+  background: #F43F5E;
+  color: #FFFFFF;
 }

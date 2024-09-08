@@ -1,16 +1,10 @@
 import type { Metadata } from 'next';
 import './globals.css';
 
-import { Playfair_Display, Lato } from 'next/font/google';
+import { Outfit } from 'next/font/google';
 
-const playfairDisplay = Playfair_Display({
+const outfit = Outfit({
   subsets: ['latin'],
-  variable: '--font-playfair-display',
-});
-const lato = Lato({
-  weight: ['300', '400', '700'],
-  subsets: ['latin'],
-  variable: '--font-lato',
 });
 
 export const metadata: Metadata = {
@@ -25,8 +19,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <script src="https://kit.fontawesome.com/8540cdc0f8.js" crossOrigin="anonymous"></script>
+      </head>
       <body
-        className={`${playfairDisplay.variable} ${lato.variable} font-sans antialiased`}
+        className={`${outfit.className} antialiased`}
       >
         {children}
       </body>
