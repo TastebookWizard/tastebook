@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
 import './globals.css';
 
+
 import { Outfit } from 'next/font/google';
+import Script from 'next/script'
 
 const outfit = Outfit({
   subsets: ['latin'],
@@ -20,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <script src="https://kit.fontawesome.com/8540cdc0f8.js" crossOrigin="anonymous"></script>
+        <Script src="https://kit.fontawesome.com/8540cdc0f8.js" crossOrigin="anonymous"></Script>
       </head>
       <body
         className={`${outfit.className} antialiased`}
