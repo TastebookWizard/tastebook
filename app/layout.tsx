@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 import './globals.css';
 
-
 import { Outfit } from 'next/font/google';
 import Script from 'next/script'
+import { Providers } from '@/lib/providers';
 
 const outfit = Outfit({
   subsets: ['latin'],
@@ -27,7 +27,9 @@ export default function RootLayout({
       <body
         className={`${outfit.className} antialiased`}
       >
-        {children}
+        <Providers>
+          {children}
+        </Providers>
       </body>
     </html>
   );

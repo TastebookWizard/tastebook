@@ -1,29 +1,51 @@
 import { StateCreator } from 'zustand';
 
 export interface UserSlice {
+  id: string;
+  authId: string;
   isLoggedIn: boolean;
-  firstName: string;
-  profilePicUrl: string;
   username: string;
   email: string;
-  isVerified: boolean;
-  setUserState: (state: Partial<UserSlice>) => void;
+  firstName: string;
+  lastName: string | null;
+  profilePicUrl: string | null;
+  dietaryPreferences: string[];
+  skillLevel: string | null;
+  favoriteCuisines: string[];
+  interests: string[];
+  allergies: string[];
+  setUser: (state: Partial<UserSlice>) => void;
   logout: () => void;
 }
 
 export const createUserSlice: StateCreator<UserSlice> = (set) => ({
+  id: '',
+  authId: '',
   isLoggedIn: false,
-  firstName: '',
-  profilePicUrl: '',
   username: '',
   email: '',
-  isVerified: false,
-  setUserState: (newState) => set((state) => ({ ...state, ...newState })),
+  firstName: '',
+  lastName: null,
+  profilePicUrl: null,
+  dietaryPreferences: [],
+  skillLevel: null,
+  favoriteCuisines: [],
+  interests: [],
+  allergies: [],
+  setUser: (newState) => set((state) => ({ ...state, ...newState })),
   logout: () => set({
+    id: '',
+    authId: '',
     isLoggedIn: false,
-    firstName: '',
     username: '',
     email: '',
-    isVerified: false,
+    firstName: '',
+    lastName: null,
+    profilePicUrl: null,
+    dietaryPreferences: [],
+    skillLevel: null,
+    favoriteCuisines: [],
+    interests: [],
+    allergies: [],
   }),
 });

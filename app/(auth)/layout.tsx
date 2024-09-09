@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function AuthLayout({
   children,
 }: {
@@ -52,6 +54,12 @@ export default function AuthLayout({
             <p className="mb-4">
               Join our community today and start your culinary journey!
             </p>
+            <Link
+              href="/home"
+              className="inline-block px-6 py-3 bg-white text-rose-500 font-semibold rounded-lg hover:bg-rose-500 hover:text-white transition-colors duration-300"
+            >
+              Continue as Guest
+            </Link>
           </div>
         </div>
       </div>
