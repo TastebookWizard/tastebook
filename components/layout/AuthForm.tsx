@@ -215,7 +215,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ isLogin }) => {
           setErrors({ general: 'Failed to fetch user data. Please try again.' });
         }
       },
-      onError: (error: any) => {
+      onError: (error: Error) => {
         console.error('Error logging in:', error);
         if (error.message === 'Invalid login credentials') {
           setErrors({ general: 'Invalid email or password' });
@@ -308,7 +308,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ isLogin }) => {
         <div className="space-y-2">
           <h3 className="text-xl font-medium">Enter OTP</h3>
           <p className="text-sm text-gray-600">
-            We've sent a one-time password (OTP) to your email. Please enter it
+            We&apos;ve sent a one-time password (OTP) to your email. Please enter it
             below to verify your account. The OTP will expire in 1 hour.
           </p>
         </div>
